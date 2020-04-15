@@ -46,7 +46,9 @@ class fsm:
             newState = newState.lower()
             
             if newState in self.end_states:
-                print( str(newState) + "reached.")
+                handler = self.state_handlers[newState]
+                handler(cargo)
+                print( str(newState) + " - reached.")
                 break
             else:
                 handler = self.state_handlers[newState]
